@@ -24,6 +24,7 @@ namespace ASP2184587.Models
         public string nombre { get; set; }
         public string documento { get; set; }
         public string email { get; set; }
+        public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compra> compra { get; set; }

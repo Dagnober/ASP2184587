@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="inventarioModel.producto" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.producto_compra" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.proveedor" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="inventarioModel.usuario" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.usuario" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="inventarioModel.compra_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.compra_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.producto_compra_ibfk_1" ManuallyRouted="false" />
