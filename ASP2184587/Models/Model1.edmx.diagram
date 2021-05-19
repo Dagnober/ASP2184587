@@ -7,9 +7,9 @@
       <Diagram DiagramId="28f1fbbabf254a0c87acedd01f8e3a7e" Name="Diagram1">
         <EntityTypeShape EntityType="inventarioModel.cliente" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.compra" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="inventarioModel.producto" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.producto" Width="1.5" PointX="4" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.producto_compra" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="inventarioModel.proveedor" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.proveedor" Width="1.5" PointX="1.625" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.usuario" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="inventarioModel.compra_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.compra_ibfk_1" ManuallyRouted="false" />

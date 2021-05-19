@@ -4,50 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-// IMPORTANDO LOS MODELOS DE BASE DE DATOS 
 using ASP2184587.Models;
 
 namespace ASP2184587.Controllers
 {
-    public class ClienteController : Controller
+    public class ProveedorController : Controller
     {
-        // GET: Cliente
+        // GET: Proveedor
         public ActionResult Index()
         {
             using(var db = new inventarioEntities1())
             {
-                return View(db.cliente.ToList());
+                return View(db.proveedor.ToList());
             }
         }
 
         public ActionResult Create()
         {
             return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(cliente cliente)
-        {
-            if (!ModelState.IsValid)
-                return View();
-
-            try
-            {
-                using (var db = new inventarioEntities1())
-                {
-                    cliente.password = ClienteController.HashSHA1(cliente.password);
-                    db.cliente.Add(cliente);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "error " + ex);
-                return View();
-            }
         }
 
         public static string HashSHA1(string value)
@@ -64,14 +38,23 @@ namespace ASP2184587.Controllers
             return sb.ToString();
         }
 
+        public ActionResult Details(int id)
+        {
+            using (var db = new inventarioEntities1())
+            {
+                var findProv = db.proveedor.Find(id);
+                return View(findProv);
+            }
+        }
+
         public ActionResult Edit(int id)
         {
             try
             {
                 using (var db = new inventarioEntities1())
                 {
-                    cliente findCli = db.cliente.Where(a => a.id == id).FirstOrDefault();
-                    return View(findCli);
+                    proveedor findProv = db.proveedor.Where(a => a.id == id).FirstOrDefault();
+                    return View(findProv);
                 }
             }
             catch (Exception ex)
@@ -80,20 +63,21 @@ namespace ASP2184587.Controllers
                 return View();
             }
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(cliente editUser)
+        public ActionResult Edit(proveedor editUser)
         {
             try
             {
                 using (var db = new inventarioEntities1())
                 {
-                    cliente user = db.cliente.Find(editUser.id);
+                    proveedor user = db.proveedor.Find(editUser.id);
 
-                    user.nombre = editUser.nombre;                    
-                    user.email = editUser.email;                   
-                    user.password = editUser.password;
+                    user.nombre = editUser.nombre;
+                    user.direccion = editUser.direccion;
+                    user.telefono = editUser.telefono;
+                    user.nombre_contacto = editUser.nombre_contacto;                    
 
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -103,15 +87,6 @@ namespace ASP2184587.Controllers
             {
                 ModelState.AddModelError("", "error " + ex);
                 return View();
-            }
-        }
-
-        public ActionResult Details(int id)
-        {
-            using (var db = new inventarioEntities1())
-            {
-                var findCli = db.proveedor.Find(id);
-                return View(findCli);
             }
         }
 
@@ -121,8 +96,8 @@ namespace ASP2184587.Controllers
             {
                 using (var db = new inventarioEntities1())
                 {
-                    var findCli = db.cliente.Find(id);
-                    db.cliente.Remove(findCli);
+                    var findProv = db.proveedor.Find(id);
+                    db.proveedor.Remove(findProv);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -133,7 +108,6 @@ namespace ASP2184587.Controllers
                 return View();
             }
         }
-
 
     }
 }
