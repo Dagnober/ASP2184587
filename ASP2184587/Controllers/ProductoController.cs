@@ -19,11 +19,11 @@ namespace ASP2184587.Controllers
             }
         }
 
-        public static string NombreProveedor (int? idproveedor)
+        public static string NombreProveedor (int? idproveedoor)
         {
             using (var db = new inventarioEntities1())
             {
-                return db.proveedor.Find(idproveedor).nombre;
+                return db.proveedor.Find(idproveedoor).nombre;
             }
         }
 
@@ -61,8 +61,69 @@ namespace ASP2184587.Controllers
                 ModelState.AddModelError("", "error " + ex);
                 return View();
             }
-
         }
+
+        public ActionResult Edit(int id)
+        {
+            using (var db = new inventarioEntities1())
+            {
+                producto productoEdit = db.producto.Where(a => a.id == id).FirstOrDefault();
+                return View(productoEdit);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(producto productoEdit)
+        {
+            try
+            {
+                using (var db = new inventarioEntities1())
+                {
+                    var oldProduct = db.producto.Find(productoEdit.id);
+                    oldProduct.nombre = productoEdit.nombre;
+                    oldProduct.cantidad = productoEdit.cantidad;
+                    oldProduct.descripcion = productoEdit.descripcion;
+                    oldProduct.percio_unitario = productoEdit.percio_unitario;
+                    oldProduct.id_proveedor = productoEdit.id_proveedor;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error " + ex);
+                return View();
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            using (var db = new inventarioEntities1())
+            {
+                return View(db.producto.Find(id));
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                using (var db = new inventarioEntities1())
+                {
+                    producto producto = db.producto.Find(id);
+                    db.producto.Remove(producto);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error " + ex);
+                return View();
+            }
+        }
+
 
 
     }
