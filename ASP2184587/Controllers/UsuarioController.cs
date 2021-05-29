@@ -13,6 +13,7 @@ namespace ASP2184587.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
+        [Authorize]
         public ActionResult Index()
         {
             using(var db = new inventarioEntities1())
@@ -165,6 +166,15 @@ namespace ASP2184587.Controllers
                 }
             }
         }
+
+        [Authorize]
+        public ActionResult CloseSession()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+
 
     }
 }
