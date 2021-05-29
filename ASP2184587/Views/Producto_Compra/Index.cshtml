@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ASP2184587.Models.compra>
+﻿@model IEnumerable<ASP2184587.Models.producto_compra>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fecha)
+            @Html.DisplayNameFor(model => model.id_compra)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.total)
+            @Html.DisplayNameFor(model => model.id_producto)
         </th>
         <th>
-            @ASP2184587.Controllers.CompraController.NombreUsuario(item.id_usuario)
-        </th>
-        <th>
-            @ASP2184587.Controllers.CompraController.NombreUsuario(item.id_cliente)
+            @Html.DisplayNameFor(model => model.cantidad)
         </th>
         <th></th>
     </tr>
@@ -29,16 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.fecha)
+            @Html.DisplayFor(modelItem => item.id_compra)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.total)
+            @Html.DisplayFor(modelItem => item.id_producto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.id_usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_cliente)
+            @Html.DisplayFor(modelItem => item.cantidad)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
