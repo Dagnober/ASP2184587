@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 // IMPORTANDO LOS MODELOS DE BASE DE DATOS 
 using ASP2184587.Models;
+using System.Web.Security;
 
 namespace ASP2184587.Controllers
 {
@@ -138,11 +139,32 @@ namespace ASP2184587.Controllers
             }
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string message = "")
         {
+            ViewBag.Message = message;
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string user, string password)
+        {
+            string passEncrip = UsuarioController.HashSHA1(password);
+            using (var db = new inventarioEntities1())
+            {
+                var userLogin = db.usuario.FirstOrDefault(e => e.email == user && e.password == passEncrip);
+                if (userLogin != null)
+                {
+                    FormsAuthentication.SetAuthCookie(userLogin.email, true);
+                    Session["User"] = userLogin;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return Login("Verifique datos");
+                }
+            }
+        }
 
     }
 }

@@ -5,8 +5,14 @@
 
 <h2>Login</h2>
 
+@{ if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-warning">@ViewBag.Message</div>
+    }
+}
+
 <div class="form-horizontal">
-    <form action="/" method="post">
+    <form action="/Usuario/login" method="post">
         @Html.AntiForgeryToken()
         <div class="form-group">
             <label class="control-label col-md-2">Usuario</label>
