@@ -313,6 +313,7 @@
     <Content Include="Views\Producto_Compra\ListarProducto.cshtml" />
     <Content Include="Views\Producto\Reporte.cshtml" />
     <Content Include="Views\Proveedor\uploadCSV.cshtml" />
+    <Content Include="Uploads\cargue masivo.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
