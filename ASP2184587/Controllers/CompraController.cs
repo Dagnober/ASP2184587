@@ -34,22 +34,6 @@ namespace ASP2184587.Controllers
             }
         }
 
-        public static string NombreCliente(int? idclientee)
-        {
-            using (var db = new inventarioEntities1())
-            {
-                return db.cliente.Find(idclientee).nombre;
-            }
-        }
-
-        public ActionResult ListarCliente()
-        {
-            using (var db = new inventarioEntities1())
-            {
-                return PartialView(db.cliente.ToList());
-            }
-        }
-
         public ActionResult Create()
         {
             return View();

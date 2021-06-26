@@ -20,8 +20,21 @@ namespace ASP2184587.Controllers
             }
         }
 
+        public static string NombreProducto(int? idproductoo)
+        {
+            using (var db = new inventarioEntities1())
+            {
+                return db.producto.Find(idproductoo).nombre;
+            }
+        }
 
-
+        public ActionResult ListarProducto()
+        {
+            using (var db = new inventarioEntities1())
+            {
+                return PartialView(db.producto.ToList());
+            }
+        }
 
         public ActionResult Create()
         {
