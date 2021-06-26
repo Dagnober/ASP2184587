@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ASP2184587.Models;
+using Rotativa;
 
 
 namespace ASP2184587.Controllers
@@ -19,7 +18,7 @@ namespace ASP2184587.Controllers
             }
         }
 
-        public static string NombreProveedor (int? idproveedoor)
+        public static string NombreProveedor(int? idproveedoor)
         {
             using (var db = new inventarioEntities1())
             {
@@ -42,7 +41,7 @@ namespace ASP2184587.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create (producto producto)
+        public ActionResult Create(producto producto)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -56,7 +55,8 @@ namespace ASP2184587.Controllers
                     return RedirectToAction("Index");
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error " + ex);
                 return View();
@@ -140,6 +140,10 @@ namespace ASP2184587.Controllers
             return View(query);
         }
 
+        public ActionResult ImprimirReporte()
+        {
+            return new ActionAsPdf("Reporte") { FileName = "Reporte.pdf" };
+        }
 
     }
 }
