@@ -11,7 +11,8 @@ namespace ASP2184587.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,23 @@ namespace ASP2184587.Models
         }
     
         public int id { get; set; }
+
+        [Required(ErrorMessage = "no puede ir vacio")]
+        [StringLength(15, MinimumLength = 2, ErrorMessage = "debe ser minimo 2 y maximo 15 caracteres")]
         public string nombre { get; set; }
+
+        [Required(ErrorMessage = "no puede ir vacio")]
+        [StringLength(15, MinimumLength = 2, ErrorMessage = "debe ser minimo 2 y maximo 15 caracteres")]
         public string apellido { get; set; }
+
+        [Required]
         public Nullable<System.DateTime> fecha_nacimiento { get; set; }
+
+        [Required]
+        [EmailAddress(ErrorMessage = "No tiene formato de email")]
         public string email { get; set; }
+
+        [Required]
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
