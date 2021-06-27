@@ -1,0 +1,16 @@
+﻿body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+    background-color: #00ffff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #030e68;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffd800;
+} 
