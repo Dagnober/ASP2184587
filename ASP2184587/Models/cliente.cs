@@ -11,8 +11,7 @@ namespace ASP2184587.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,20 +21,9 @@ namespace ASP2184587.Models
         }
     
         public int id { get; set; }
-
-        [Required]
-        [StringLength(15)]
         public string nombre { get; set; }
-
-        [Required]
-        [StringLength(20)]
         public string documento { get; set; }
-
-        [Required]
-        [EmailAddress(ErrorMessage = "No tiene formato de email")]
         public string email { get; set; }
-
-        [Required]
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
