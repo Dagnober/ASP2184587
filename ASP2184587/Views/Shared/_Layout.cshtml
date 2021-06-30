@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
+ <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,8 @@
 
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="~/Content/Custom.css">
-</head>
-<body>
+ </head>
+ <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -21,19 +21,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ASP2184587", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>                    
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Iniciar Sesion", "Login", "Usuario")</li>
                     @if (User.Identity.IsAuthenticated)
-                     {
+                    {
                         <li>@Html.ActionLink("Usuario", "Index", "Usuario")</li>
+                        <li>@Html.ActionLink("Cliente", "Index", "Cliente")</li>
+                        <li>@Html.ActionLink("Proveedor", "Index", "Proveedor")</li>
+                        <li>@Html.ActionLink("CSV", "uploadCSV", "Cliente")</li>
+                        <li>@Html.ActionLink("Reporte", "ImprimirReporte2","Compra")</li>
                         <li>@Html.ActionLink("Cerrar Sesion", "CloseSession", "Usuario")</li>
-                     }
+                    }
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Crud Usario <span class="glyphicon glyphicon-fire" aria-hidden="true"></span></a>
@@ -51,14 +54,17 @@
         @RenderBody()
         <hr />
         <footer class="footer">
+            <br >
+            <p></p>
             <p>Creado por: Dagnober Castañeda C.<br />
             <p><a href="dcastaeda704@misena.edu.co">Send email</a></p>
-            <a href="https://github.com/Dagnober/ASP2184587" target="_blank">Repositorio GitHub</a></p>
+            <p><a href="https://github.com/Dagnober/ASP2184587" target="_blank">Repositorio GitHub</a></p>
+            <br />            
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</body>
+ </body>
 </html>

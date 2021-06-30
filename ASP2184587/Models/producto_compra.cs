@@ -11,12 +11,19 @@ namespace ASP2184587.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class producto_compra
     {
         public int id { get; set; }
+
+        [Required]
         public Nullable<int> id_compra { get; set; }
+
+        [Required]
         public Nullable<int> id_producto { get; set; }
+
+        [Required]
         public Nullable<int> cantidad { get; set; }
     
         public virtual compra compra { get; set; }
